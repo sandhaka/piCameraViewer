@@ -1,0 +1,27 @@
+<div class="content">
+	<div class="col-md-8" style="padding: 7px">
+		<div class="row">
+			<div class="col-md-6">
+				<img src="{{imageSrc0}}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5" style="margin: 5px">
+				<button class="btn btn-primary" (click)="grabAndReload(0)">Update</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8" style="padding: 7px">
+		<div class="row">
+			<div class="col-md-6">
+				<img src="{{imageSrc1}}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5" style="margin: 5px">
+				<button class="btn btn-primary" (click)="grabAndReload(1)">Update</button>
+			</div>
+		</div>
+	</div>
+</div>
+<button class="btn" (click)="logout()">Logout</button>
