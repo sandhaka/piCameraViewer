@@ -20,6 +20,8 @@ export class CamService {
             {
                 "camIndex": camIndex
             })
-            .map(data => data);
+            .map(data => {
+                return data;
+            });
     }
 }

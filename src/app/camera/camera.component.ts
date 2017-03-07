@@ -10,12 +10,14 @@ import {Router} from "@angular/router";
 })
 export class CameraComponent {
 
-    private readonly imageSrc0 = "../../assets/media/cam/camera0.jpg";
-    private readonly imageSrc1 = "../../assets/media/cam/camera1.jpg";
+    private readonly imageRootSrc = "assets/media/cam/camera";
 
     private camService: CamService;
     private authService: AuthenticationService;
     private router: Router;
+
+    private imgSrc0 = "";
+    private imgSrc1 = "";
 
     public constructor(camService: CamService, authService: AuthenticationService, router: Router) {
         this.camService = camService;
@@ -31,14 +33,18 @@ export class CameraComponent {
     }
 
     private grabAndReload(camIndex): void {
-        this.camService.grabFrame(camIndex).subscribe(res => {
-                console.log("Frame updated successfully!");
+        this.camService.grabFrame(camIndex).subscribe(
+            res => {
+
+                let guid = res._body;
+
+                switch (camIndex) {
+                    case 0: { this.imgSrc0 = `${this.imageRootSrc}${guid}_0.jpg`; break; }
+                    case 1: { this.imgSrc1 = `${this.imageRootSrc}${guid}_1.jpg`; break; }
+                }
             },
             err => {
                 console.error(`Error during frame updating: ${err._body}`);
-            },
-            () => {
-                location.reload();
             });
     }
 }
