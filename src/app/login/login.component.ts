@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.form = this.formBuilder.group({
-            'email': [
-                this.loginData.email,
+            'username': [
+                this.loginData.username,
                 Validators.required
             ],
             'password': [
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
         this.loginData = this.form.value;
 
-        this.authService.login(this.loginData.email, this.loginData.password)
+        this.authService.login(this.loginData.username, this.loginData.password)
             .subscribe(result => {
                     if (result === true) {
                         this.router.navigate(['/camera']);
@@ -84,12 +84,12 @@ export class LoginComponent implements OnInit {
     }
 
     formErrors = {
-        'email': '',
+        'username': '',
         'password': ''
     };
 
     validationMessages = {
-        'email': {
+        'username': {
             'required': 'Required'
         },
         'password': {
