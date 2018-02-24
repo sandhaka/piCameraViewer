@@ -9,7 +9,7 @@ router.post('/', function (req, res) {
     var camIndex = req.body.camIndex;
     var _guid = guid.raw();
 
-    var retObject = cp.spawnSync('fswebcam', ['-d', '/dev/video' + camIndex, '/media/NAS/cam/dist/assets/media/cam/camera' + _guid + '_' + camIndex + '.jpg'], {
+    var retObject = cp.spawnSync('fswebcam', ['-d', '/dev/video' + camIndex, '/media/storage/cam/dist/assets/media/cam/camera' + _guid + '_' + camIndex + '.jpg'], {
         timeout: 5000,
         stdio: 'inherit'
     });
